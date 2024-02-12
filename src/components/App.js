@@ -51,7 +51,7 @@ export default function App() {
     const [selected, setSelected] = useState(null)
 
     // navbar selected state
-    const [selectedNav, setSelectedNav] = useState(navs[0].id)
+    const [selectedNav, setSelectedNav] = useState(navs[0])
 
 
     // handle select user function
@@ -81,7 +81,7 @@ export default function App() {
             <Navbar navs={navs} selectedNav={selectedNav} setSelectedNav={setSelectedNav} />
 
             {/* Books */}
-            {selectedNav === navs[0].id ?
+            {selectedNav.name === 'Books' ?
                 <div className='container'>
                     <UserList 
                         users={users}

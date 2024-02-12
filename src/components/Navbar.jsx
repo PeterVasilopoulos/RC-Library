@@ -2,8 +2,8 @@ import NavbarItem from "./NavbarItem"
 
 export default function Navbar({navs, selectedNav, setSelectedNav}) {
     // select navbar item function
-    function handleSelectNav(id) {
-        setSelectedNav(id)
+    function handleSelectNav(nav) {
+        setSelectedNav(nav)
     }
 
     return (
@@ -11,7 +11,7 @@ export default function Navbar({navs, selectedNav, setSelectedNav}) {
             {
                 navs.map((nav) => <NavbarItem 
                         classes={nav.classes}
-                        id={nav.id}
+                        nav={nav}
                         selectedNav={selectedNav}
                         onSelectNav={handleSelectNav}
                     >

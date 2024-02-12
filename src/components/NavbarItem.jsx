@@ -1,11 +1,11 @@
-export default function NavbarItem({children, classes, id, selectedNav, onSelectNav}) {
+export default function NavbarItem({children, classes, nav, selectedNav, onSelectNav}) {
     let addClasses = classes
     
-    if(selectedNav === id) {
+    if(selectedNav.id === nav.id) {
         addClasses = addClasses + ' navbar-selected'
     }
     function handleClick() {
-        onSelectNav(id)
+        onSelectNav(nav)
     }
 
     return (
