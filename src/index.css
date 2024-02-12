@@ -34,6 +34,7 @@ body {
 
 .user:hover {
   background-color: rgb(234, 234, 234);
+  cursor: pointer;
 }
 
 .user p {
@@ -46,8 +47,8 @@ body {
   gap: 7px;
 }
 
-input[type='checkbox'] {
-  accent-color: black;
+.selected {
+  background-color: rgb(230, 230, 230);
 }
 
 /* ------------------------------ */
@@ -81,4 +82,9 @@ input[type='checkbox'] {
 
 button {
   padding: 1px 2px;
+}
+
+.overdue {
+  color: rgb(150, 8, 8);
+  font-weight: bold;
 }
