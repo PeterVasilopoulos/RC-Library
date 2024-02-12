@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import UserList from './UserList'
 import Books from './Books'
+import Navbar from './Navbar'
 
 const testUsers = [
     {
@@ -20,11 +21,37 @@ const testUsers = [
     }
 ]
 
+const navs = [
+    {
+        name: 'Books',
+        classes: '',
+        id: crypto.randomUUID()
+    },
+    {
+        name: 'Q&A',
+        classes: '',
+        id: crypto.randomUUID()
+    },
+    {
+        name: 'Notes',
+        classes: '',
+        id: crypto.randomUUID()
+    },
+    {
+        name: 'Announcements',
+        classes: '',
+        id: crypto.randomUUID()
+    }
+]
+
 export default function App() {
     // users state
     const [users, setUsers] = useState(testUsers)
     // selected user state
     const [selected, setSelected] = useState(null)
+
+    // navbar selected state
+    const [selectedNav, setSelectedNav] = useState(navs[0].id)
 
 
     // handle select user function
@@ -50,18 +77,27 @@ export default function App() {
     }
 
     return (
-        <div className='container'>
-            <UserList 
-                users={users}
-                selected={selected} 
-                onSelect={handleSelect} 
-                onAddUser={handleAddUser} 
-            />
+        <>
+            <Navbar navs={navs} selectedNav={selectedNav} setSelectedNav={setSelectedNav} />
 
-            <Books 
-                onChangeBooks={handleChangeBooks}
-                selected={selected} 
-            />
-        </div>
+            {/* Books */}
+            {selectedNav === navs[0].id ?
+                <div className='container'>
+                    <UserList 
+                        users={users}
+                        selected={selected} 
+                        onSelect={handleSelect} 
+                        onAddUser={handleAddUser} 
+                    />
+
+                    <Books 
+                        onChangeBooks={handleChangeBooks}
+                        selected={selected} 
+                    />
+                </div>
+            : 
+                <div></div>
+            }
+        </>
     )
 }
