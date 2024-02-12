@@ -28,19 +28,16 @@ export default function Books({selected, onChangeBooks}) {
                 <label>Check out books: </label>
                 <select value={checkoutBooks} onChange={(e) => setCheckoutBooks(e.target.value)}>
                     <option value={0}>0</option>
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
-                    <option value={5}>5</option>
+                    {Array.from({length: 5 - selected?.books}, (_, i) => i + 1).map((num) =>
+                        <option value={num} key={num}>{num}</option>
+                    )}
                 </select>
             </div>
 
             <div className="books-input">
                 <label>Return books: </label>
                 <select value={returnBooks} onChange={(e) => setReturnBooks(e.target.value)}>
-                    <option value={0}>0</option>
-                    {Array.from({length: selected?.books}, (_, i) => i + 1).map((num) =>
+                    {Array.from({length: selected?.books + 1}, (_, i) => i).map((num) =>
                         <option value={num} key={num}>{num}</option>
                     )}
                 </select>
